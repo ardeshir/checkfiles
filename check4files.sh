@@ -7,6 +7,16 @@ shopt -s -o nounset
 declare -rx SCRIPT=${0##*/}
 declare -rx INCOMING_DIRECTORY="."
 
+function while_read() {
+    >$OUTFILE
+  while read LINE
+  do
+      echo "$LINE" >> $OUTFILE
+     :
+  done < $INDFILE
+}
+
+
 ls -1 "$INCOMING_DIRECTORY" |
   (
     while read FILE ; do
