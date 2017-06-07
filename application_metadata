@@ -4,5 +4,5 @@ dvlapp02 apocs apocs-admin /ltapps/apocs-admin toads
 dvlapp02 pricingservice pricing-inquiry /ltapps/pricing-inquiry toads
 dvlapp02 pricingservice pricing-admin /ltapps/pricing-admin toads
 dvlapp02 scc secure-card-capture-service /ltapps/secure-card-capture-service toads
-dvlapp02 scc secure-card-capture-admin /ltapps/secure-card-capture-admin toads
-
+dvlapp02 scc secure-card-capture-admin /ltapps/secure-card-capture-admin toadsr
+dvlapp02 apocsBIGNEWAPP apocs-inquiry /ltapps/apocs-inquiry toads

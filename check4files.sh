@@ -13,7 +13,7 @@ function while_read() {
   do
       echo "$LINE" >> $OUTFILE
      :
-  done < $INDFILE
+  done < $INFILE
 }
 
 
