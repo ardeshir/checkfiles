@@ -1,8 +1,0 @@
-dvlapp02 apocsBIGNEWAPP apocs-inquiry /ltapps/apocs-inquiry toads
-dvlapp02 apocsBIGNEWAPP apocs-inquiry /ltapps/apocs-inquiry toads
-dvlapp02 apocsBIGNEWAPP apocs-inquiry /ltapps/apocs-inquiry toads
-dvlapp02 apocsBIGNEWAPP apocs-inquiry /ltapps/apocs-inquiry toads
-dvlapp02 apocsBIGNEWAPP apocs-inquiry /ltapps/apocs-inquiry toads
-dvlapp02 apocsBIGNEWAPP apocs-inquiry /ltapps/apocs-inquiry toads
-dvlapp02 apocsBIGNEWAPP apocs-inquiry /ltapps/apocs-inquiry toads
-dvlapp02 apocsBIGNEWAPP apocs-inquiry /ltapps/apocs-inquiry toads

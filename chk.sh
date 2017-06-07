@@ -21,7 +21,6 @@ ls -1 "$INCOMING_DIRECTORY" | while read FILE; do
        fi
     done
     
-#printf "We're out of main while\n"
 printf "\nCURR=$CURR\n OLD=$OLD\n TMPOUT=$TMPOUT\n"
 
         if [[ ! $CURR = false ]]; then
@@ -30,21 +29,16 @@ printf "\nCURR=$CURR\n OLD=$OLD\n TMPOUT=$TMPOUT\n"
                     printf "We have app_meta: %s \n" "application_metadata"
                         while read LINE; do
                           while read NEXT; do
-                                if grep $NEXT $TMPOUT ; then
-                                  break 
-                                else 
                                       if [[ $LINE != $NEXT ]]; then
                                        echo "$NEXT" >> $TMPOUT
                                       fi
-                                 fi
-                           
                            done < <(cat "current_application_metadata") 
                       done < <(cat "application_metadata") 
                 else 
-                   printf "2- Else: $OLD\n"
+                   printf "No Application_Metadata!\n"
                 fi
         else 
-        printf "1- Else: $CURR\n"
+        printf "No Current_Metadata!\n";
         fi
 sort $TMPOUT | uniq >> application_metadata       
 exit 0
