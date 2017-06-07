@@ -5,46 +5,45 @@
 
 declare -rx SCRIPT=${0##*/}
 declare -rx INCOMING_DIRECTORY=$1
-
+declare CURR
+declare OLD
+declare DIR="initscripts"
 TMPOUT="outfile.txt"
+LOG="logfile.txt"
 
-ls -1 "$INCOMING_DIRECTORY" | while read FILE; do
-      
-       if [[ $FILE = "current_application_metadata" ]]; then
-           printf "Inside initscripts: Current App meta: %s \n" "$FILE"
-           CURR="current_application_metadata"
-       fi 
-       
-       if [[ $FILE = "application_metadata" ]]; then
-          printf "Inside initscripts: Application meta: %s \n" "$FILE"
-          OLD="application_metadata"
-       fi
-    done
-    
-#printf "We're out of main while\n"
-printf "\nCURR=$CURR\n OLD=$OLD\n TMPOUT=$TMPOUT\n"
+if [[ -d "$DIR" && -x "$DIR" ]]; then 
+printf "Initscrtipt exists...\n" 
+     if [[ -f "$DIR/application_metadata" ]]; then
+       printf "Old $DIR/application_metadata exitst...\n"
+       OLD=1
+     else 
+     printf "Coping current to application_metadata"
+     fi
+else
+ echo "Creating directory\n"
+ echo "Coping application_metadata\n" 
+fi
 
-        if [[ ! $CURR = false ]]; then
-          printf "We have current_meta: %s \n" "current_application_metadata"
+printf "We have current_meta: %s \n" "current_application_metadata" >> $LOG
                 if [[ ! $OLD = false ]]; then
-                    printf "We have app_meta: %s \n" "application_metadata"
+                printf "We have app_meta: %s \n" "application_metadata" >> $LOG
                         while read LINE; do
                           while read NEXT; do
-                                if grep $NEXT $TMPOUT ; then
-                                  break 
-                                else 
+
                                       if [[ $LINE != $NEXT ]]; then
                                        echo "$NEXT" >> $TMPOUT
                                       fi
-                                 fi
-                           
+                                      
                            done < <(cat "current_application_metadata") 
-                      done < <(cat "application_metadata") 
+                           
+                      done < <(cat "$DIR/application_metadata") 
                 else 
-                   printf "2- Else: $OLD\n"
+                printf "No Application_Metadata, using current!\n" >> $LOG
                 fi
-        else 
-        printf "1- Else: $CURR\n"
-        fi
-sort $TMPOUT | uniq >> application_metadata       
+
+sort -u $TMPOUT | uniq >> "$DIR/application_metadata" 
+
+# clean up
+# rm outfile.txt 
+# rm logfile.txt
 exit 0
