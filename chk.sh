@@ -15,7 +15,7 @@ if [[ -d "$DIR" && -x "$DIR" ]]; then
 printf "Initscrtipt exists...\n" 
      if [[ -f "$DIR/application_metadata" ]]; then
        printf "Old $DIR/application_metadata exitst...\n"
-       OLD=1
+       OLD=true
      else 
      printf "Coping current to application_metadata"
      fi
@@ -25,7 +25,7 @@ else
 fi
 
 printf "We have current_meta: %s \n" "current_application_metadata" >> $LOG
-                if [[ ! $OLD = false ]]; then
+                if [[ $OLD = true ]]; then
                 printf "We have app_meta: %s \n" "application_metadata" >> $LOG
                         while read LINE; do
                           while read NEXT; do
