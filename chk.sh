@@ -41,9 +41,10 @@ printf "We have current_meta: %s \n" "current_application_metadata" >> $LOG
                 printf "No Application_Metadata, using current!\n" >> $LOG
                 fi
 
-sort -u $TMPOUT | uniq >> "$DIR/application_metadata" 
-
+sort -u $TMPOUT | uniq >> "$DIR/application_metadata_t" 
+sort -u "$DIR/application_metadata_t" | uniq > "$DIR/application_metadata" 
 # clean up
-# rm outfile.txt 
-# rm logfile.txt
+rm outfile.txt 
+rm logfile.txt
+rm "$DIR/application_metadata_t" 
 exit 0
