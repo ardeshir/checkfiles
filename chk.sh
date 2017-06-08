@@ -14,14 +14,16 @@ LOG="logfile.txt"
 if [[ -d "$DIR" && -x "$DIR" ]]; then 
 printf "Initscrtipt exists...\n" 
      if [[ -f "$DIR/application_metadata" ]]; then
-       printf "Old $DIR/application_metadata exitst...\n"
+       printf "Old $DIR/application_metadata exist...\n"
        OLD=true
      else 
      printf "Coping current to application_metadata"
+     # exit 0
      fi
 else
  echo "Creating directory\n"
  echo "Coping application_metadata\n" 
+ # exit 0
 fi
 
 printf "We have current_meta: %s \n" "current_application_metadata" >> $LOG
